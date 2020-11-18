@@ -55,6 +55,71 @@
         echo "\n";
         echo sqrt($int);
     ?>
+    <br />
+    <!--php user input -->    
+    <div>
+        <form action="site.php" method="get">
+            Name: <input type="text" name="userName">
+            Number 1: <input type="number" name="num1">
+            Number 2: <input type="number" name="num2">
+            <input type="submit">
+        </form>
+    </div>
+    <?php
+            echo $_GET["userName"]; // GET the data from the input tag (HTTP get)
+            echo "<br>";
+            echo $_GET["num1"] + $_GET["num2"]; // Performing operation using data input
+    ?>
+    <div>
+        <form action="site.php" method="post">
+            Color: <input type="text" name="color">
+            Plural: <input type="text" name="plural">
+            <input type="submit">
+        </form>
+    </div>
+    <?php
+        // retrieve data from HTTP POST
+        $color = $_POST["color"]; // post method - does not leave variable in URL parameter
+        $plural = $_POST["plural"];
+        $inputs = array($color, $plural); // PHP array declaration
+
+        echo "Violets  are $inputs[0]"; // accessing array element
+        echo "<br>";
+        echo "$inputs[1] are blue"; 
+    ?>
+    <br />
+    <!--Retrieve value from checkboxes PHP-->
+     <div>
+        <form action="site.php" method="post">            
+            Apple: <input type="checkbox" name="fruits[]" value="apple">
+            Durian: <input type="checkbox" name="fruits[]" value="durian">
+            Orange: <input type="checkbox" name="fruits[]" value="orange">
+            <input type="submit">
+        </form>
+    </div>
+    <?php
+        // retrieve data from HTTP POST
+        $fruits = $_POST["fruits"]; // this is to retrieve an array value from POST
+
+        // Declaring associative arrays
+        $grades = array("Jim"=>"A+", "Pam"=>"B-", "Jack"=>"A-"); // storing a key mapped (=>) to value pair
+
+        // Function declar in PHP
+        function dispResult($array) {
+            for ($i = 0; $i < count($array); $i++) {
+                echo $array[$i];
+            }
+        }
+
+        echo "$fruits[1]";
+        echo $grades["Jim"];
+        echo $grades["Pam"];
+        $grades["Pam"] = "A*";
+        echo $grades["Pam"];
+        echo count($grades);
+        dispResult($fruits);
+    ?>
+
 
 </body>
 </html>
